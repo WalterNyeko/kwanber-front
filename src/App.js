@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import './App.css';
+import Schools from '../src/containers/schools/Schools';
+import LandingPage from '../src/containers/home/LandingPage';
+import Students from '../src/containers/students/Students';
+
 
 class App extends Component {
   render() {
@@ -9,7 +13,9 @@ class App extends Component {
       <React.Fragment>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={()=><p>Component Goes Here</p>} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/schools" exact component={Schools} />
+          <Route path="/students" exact component={Students} />
         </Switch>
       </BrowserRouter>
       <ToastContainer />
