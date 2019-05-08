@@ -1,4 +1,7 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/88ad1f870bedd730d025/maintainability)](https://codeclimate.com/github/WalterNyeko/kwanber-front/maintainability)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/88ad1f870bedd730d025/test_coverage)](https://codeclimate.com/github/WalterNyeko/kwanber-front/test_coverage)
 
 ## Available Scripts
 
