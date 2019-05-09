@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Modal } from 'antd';
 import { EditModal } from '../../../containers/helpers/EditModal';
 
-describe('Modal', () =>{
+describe('Edit Modal', () =>{
 
     const wrapper = shallow(
     <EditModal 
@@ -30,4 +30,4 @@ describe('Modal', () =>{
         wrapper.instance().showModal();
         expect(spy).toHaveBeenCalled();
     })
-} )
+} );

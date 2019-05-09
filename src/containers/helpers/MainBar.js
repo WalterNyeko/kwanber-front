@@ -15,8 +15,18 @@ import styles from '../../styles/HomePage';
 class MainBar extends Component {
   render() {
     const { 
-      classes, 
-      state, 
+      classes: { 
+        appBar, 
+        appBarShift, 
+        toolbar, 
+        menuButtonHidden, 
+        title, 
+        bigAvatar, 
+        menuButton
+      }, 
+      state: { 
+        open 
+      }, 
       handleDrawerOpen 
     } = this.props;
     return (
@@ -24,16 +34,15 @@ class MainBar extends Component {
         <CssBaseline />
         <AppBar
           position="absolute"
-          className={classNames(classes.appBar, state.open && classes.appBarShift)}
+          className={classNames(appBar, open && appBarShift)}
         >
-          <Toolbar disableGutters={!state.open} className={classes.toolbar}>
+          <Toolbar disableGutters={!open} className={toolbar}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
               onClick={handleDrawerOpen}
               className={classNames(
-                classes.menuButton,
-                state.open && classes.menuButtonHidden,
+                menuButton, open && menuButtonHidden,
               )}
             >
               <MenuIcon />
@@ -43,7 +52,7 @@ class MainBar extends Component {
               variant="h6"
               color="inherit"
               noWrap
-              className={classes.title}
+              className={title}
             >
               Kwan Ber Initiative
             </Typography>
@@ -52,7 +61,7 @@ class MainBar extends Component {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <Avatar alt="User" src="" className={classes.bigAvatar} />
+            <Avatar alt="User" src="" className={bigAvatar} />
           </Toolbar>
         </AppBar>
       </>
