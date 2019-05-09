@@ -1,7 +1,8 @@
 import React from 'react';
-import { Modal, Button, Icon } from 'antd';
+import { Modal, Button } from 'antd';
+import EditIcon from '@material-ui/icons/Edit';
 
-class ReusableModal extends React.Component {
+export class EditModal extends React.Component {
   state = {
     visible: false,
     confirmLoading: false,
@@ -15,7 +16,7 @@ class ReusableModal extends React.Component {
 
   handleOk = () => {
     this.setState({
-        visible: false,
+        visible: false,      
     });
   }
 
@@ -26,23 +27,22 @@ class ReusableModal extends React.Component {
   }
 
   render() {
-    const { 
-        visible, 
-        confirmLoading 
-    } = this.state;
-    const { 
-        buttonText, 
+    const { visible, confirmLoading } = this.state;
+    const {  
         modalTitle, 
-        modalContent, 
-        modalButtonType,
+        modalContent,
         okButtonText,
-        modalWidth 
+        modalWidth,
+        modalButtonType,
+        classes 
     } = this.props;
     return (
       <>
-        <Button type={modalButtonType} onClick={this.showModal}>
-            <Icon type="plus" />{buttonText}
-        </Button>
+        <EditIcon 
+            className={classes.icon} 
+            style={{cursor: 'pointer', color: 'blue'}}
+            onClick={this.showModal}
+        />
         <Modal
             title={modalTitle}
             visible={visible}
@@ -63,4 +63,4 @@ class ReusableModal extends React.Component {
     );
   }
 }
-export default ReusableModal;
+export default EditModal;
