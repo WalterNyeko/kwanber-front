@@ -4,22 +4,23 @@ import { Drawer } from 'antd';
 import { BrowserRouter } from 'react-router-dom';
 import SideBar from '../../../containers/helpers/SideBar';
 
-describe('Modal', () =>{
+describe('SideBar', () =>{
 
     const props = {
-        classes: {},
         state: {
             open: false
-        }
+        },
+        handleDrawerClose: jest.fn(),
     }
 
     const wrapper = mount(
         <BrowserRouter>
             <SideBar {...props} />
-        </BrowserRouter>);
+        </BrowserRouter>
+    );
 
     it('should render drawer component', () =>{
-        expect(wrapper.instance().state).toBe(null); 
-        //this should fail if the component is rendered correctly
+        const { open } = wrapper.instance().props.children.props.state;
+        expect(open).toBe(false);
     })
-} )
+} );

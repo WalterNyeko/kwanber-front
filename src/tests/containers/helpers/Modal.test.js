@@ -6,6 +6,7 @@ import TheModal from '../../../containers/helpers/Modal';
 describe('Modal', () =>{
 
     const wrapper = shallow(<TheModal/>);
+
     it('should render modal component', () =>{
         expect(wrapper.find(Modal)).toHaveLength(1);
     })
@@ -27,4 +28,4 @@ describe('Modal', () =>{
         wrapper.instance().showModal();
         expect(spy).toHaveBeenCalled();
     })
-} )
+} );

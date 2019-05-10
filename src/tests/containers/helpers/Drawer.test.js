@@ -3,12 +3,13 @@ import { shallow } from 'enzyme';
 import { Drawer } from 'antd';
 import DetailsDrawer from '../../../containers/helpers/Drawer';
 
-describe('Modal', () =>{
+describe('Drawer', () =>{
 
     const wrapper = shallow(
     <DetailsDrawer 
         classes={{}}
     />);
+    
     it('should render drawer component', () =>{
         expect(wrapper.find(Drawer)).toHaveLength(1);
     })
@@ -24,4 +25,4 @@ describe('Modal', () =>{
         wrapper.instance().showDrawer();
         expect(spy).toHaveBeenCalled();
     })
-} )
+} );

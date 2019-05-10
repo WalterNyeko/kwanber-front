@@ -22,7 +22,10 @@ import { NavLink  } from 'react-router-dom';
 class SideBar extends Component {
   render() {
     const { 
-        classes, 
+        classes: { 
+            drawerPaper, 
+            drawerPaperClose, 
+            toolbarIcon}, 
         state: { open }, 
         handleDrawerClose 
     } = this.props;
@@ -30,11 +33,11 @@ class SideBar extends Component {
         <Drawer
             variant="permanent"
             classes={{
-            paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
+            paper: classNames(drawerPaper, !open && drawerPaperClose),
             }}
             open={open}
         >
-            <div className={classes.toolbarIcon}>
+            <div className={toolbarIcon}>
             <IconButton onClick={handleDrawerClose}>
                 <ChevronLeftIcon />
             </IconButton>
