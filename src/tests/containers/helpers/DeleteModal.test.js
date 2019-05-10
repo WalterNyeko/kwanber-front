@@ -3,12 +3,13 @@ import { shallow } from 'enzyme';
 import { Modal } from 'antd';
 import DeleteModal from '../../../containers/helpers/DeleteModal';
 
-describe('Modal', () =>{
+describe('Delete Modal', () =>{
 
     const wrapper = shallow(
     <DeleteModal
         classes={{}}
-    />);
+    />).dive();
+
     it('should render modal component', () =>{
         expect(wrapper.find(Modal)).toHaveLength(1);
     })
@@ -30,4 +31,4 @@ describe('Modal', () =>{
         wrapper.instance().showModal();
         expect(spy).toHaveBeenCalled();
     })
-} )
+} );

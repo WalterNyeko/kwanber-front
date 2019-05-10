@@ -4,7 +4,7 @@ import { Drawer } from 'antd';
 import { BrowserRouter } from 'react-router-dom';
 import MainBar from '../../../containers/helpers/MainBar';
 
-describe('Modal', () =>{
+describe('Main Bar', () =>{
 
     const props = {
         classes: {},
@@ -16,10 +16,11 @@ describe('Modal', () =>{
     const wrapper = mount(
         <BrowserRouter>
             <MainBar {...props} />
-        </BrowserRouter>);
+        </BrowserRouter>
+    );
         
     it('should render drawer component', () =>{
-        expect(wrapper.instance().state).toBe(null); 
-        //this should fail if the component is rendered correctly
+        const { open } = wrapper.instance().props.children.props.state;
+        expect(open).toBe(true);
     })
-} )
+} );

@@ -61,7 +61,8 @@
       "!src/serviceWorker.js",
       "!src/setupTests.js",
       "!src/index.js",
-      "!src/graphql/index.js"
+      "!src/graphql/index.js",
+      "!src/styles/**"
     ]
   }
 }
