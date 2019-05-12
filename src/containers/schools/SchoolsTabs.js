@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Table from '../../containers/helpers/Table';
 import { defaultTitles, testTitle } from '../fixtures/TableTitles';
-import { testTabledata } from '../fixtures/TestTableData';
+import { testTableData } from '../fixtures/TestTableData';
 import TestDrawerContent from '../fixtures/TestDrawerContent';
 
 
@@ -75,8 +75,8 @@ class SchoolsTabs extends React.Component {
                 <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
-                  tableData={testTabledata}
-                  drawerContent={TestDrawerContent}
+                  tableData={testTableData}
+                  drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
           <TabContainer dir={direction}>
@@ -86,8 +86,8 @@ class SchoolsTabs extends React.Component {
                 <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
-                  tableData={testTabledata}
-                  drawerContent={TestDrawerContent}
+                  tableData={testTableData}
+                  drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
           <TabContainer dir={direction}>
@@ -97,8 +97,8 @@ class SchoolsTabs extends React.Component {
                 <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
-                  tableData={testTabledata}
-                  drawerContent={TestDrawerContent}
+                  tableData={testTableData}
+                  drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
         </SwipeableViews>

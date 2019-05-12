@@ -11,7 +11,7 @@ import Modal from '../helpers/Modal';
 import AddStudentForm from './AddStudentForm';
 import { styles } from '../../styles/StudentsTabs';
 import { defaultTitles, testTitle } from '../fixtures/TableTitles';
-import { testTabledata } from '../fixtures/TestTableData';
+import { testTableData } from '../fixtures/TestTableData';
 import TestDrawerContent from '../fixtures/TestDrawerContent';
 
 export const TabContainer = ({ children, dir }) => {
@@ -73,7 +73,7 @@ class StudentsTabs extends React.Component {
             <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
-                  tableData={testTabledata}
+                  tableData={testTableData}
                   drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
@@ -88,7 +88,7 @@ class StudentsTabs extends React.Component {
             <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
-                  tableData={testTabledata}
+                  tableData={testTableData}
                   drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
@@ -103,7 +103,7 @@ class StudentsTabs extends React.Component {
             <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
-                  tableData={testTabledata}
+                  tableData={testTableData}
                   drawerContent={<AddStudentForm/>}
                 />
           </TabContainer>

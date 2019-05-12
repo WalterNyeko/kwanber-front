@@ -68,7 +68,7 @@ class SideBar extends Component {
                         <ListItemText primary="Students" />
                     </ListItem>
                 </NavLink>
-                <NavLink to={`/academics`}>
+                <NavLink to={`/academics/results`}>
                     <ListItem button>
                         <ListItemIcon>
                             <LayersIcon />

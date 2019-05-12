@@ -1,4 +1,4 @@
-export const testTabledata = [
+export const testTableData = [
     { "name": "Walter Nyeko", "email": "walter@gmail.com", 
     "address": "Koro", "contact": "0786277071", "age": 27, "gender": "Male"},
     { "name": "Bongomin Daniel", "email": "walter@gmail.com", 

@@ -74,13 +74,18 @@ describe('TestDrawerContent', () =>{
 
     it('should call handleChange', () =>{
         const spy = jest.spyOn(wrapper.instance(), 'handleChange');
-        wrapper.instance().handleChange('multi');
+        wrapper.instance().handleChange("multi")("test");
         expect(spy).toHaveBeenCalled();
     })
 
     it('should call handleInputChange', () =>{
         const spy = jest.spyOn(wrapper.instance(), 'handleInputChange');
-        wrapper.instance().handleInputChange('schoolLevel');
+        const event = {
+            target: {
+                value: "test"
+            }
+        }
+        wrapper.instance().handleInputChange("schoolLevel")(event);
         expect(spy).toHaveBeenCalled();
     })
 });
