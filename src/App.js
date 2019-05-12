@@ -5,6 +5,8 @@ import LandingPage from './containers/home/dashboard/LandingPage';
 import Schools from './containers/schools/Schools';
 import Students from './containers/students/Students';
 import AcademicResults from './containers/academics/core/AcademicResults';
+import Jobs from './containers/jobs/JobsComponent';
+import Scholarships from './containers/scholarships/ScholarshipsComponent';
 import './App.css';
 
 class App extends Component {
@@ -17,6 +19,8 @@ class App extends Component {
               <Route path="/schools" exact component={Schools} />
               <Route path="/students" exact component={Students} />
               <Route path="/academics/results" exact component={AcademicResults} />
+              <Route path="/jobs" exact component={Jobs} />
+              <Route path="/scholarships" exact component={Scholarships} />
           </Switch>
         </BrowserRouter>
       <ToastContainer />
