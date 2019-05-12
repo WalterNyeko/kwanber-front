@@ -74,7 +74,7 @@ class StudentsTabs extends React.Component {
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
                   tableData={testTabledata}
-                  drawerContent={TestDrawerContent}
+                  drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
           <TabContainer dir={theme.direction}>
@@ -89,7 +89,7 @@ class StudentsTabs extends React.Component {
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
                   tableData={testTabledata}
-                  drawerContent={TestDrawerContent}
+                  drawerContent={<TestDrawerContent/>}
                 />
           </TabContainer>
           <TabContainer dir={theme.direction}>
@@ -104,7 +104,7 @@ class StudentsTabs extends React.Component {
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
                   tableData={testTabledata}
-                  drawerContent={TestDrawerContent}
+                  drawerContent={<AddStudentForm/>}
                 />
           </TabContainer>
         </SwipeableViews>

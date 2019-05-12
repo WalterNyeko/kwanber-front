@@ -50,7 +50,7 @@ class ReusableTable extends React.Component {
         viewTableTitles, 
         actionTableTitles, 
         tableData,
-        TestDrawerContent
+        drawerContent
     } = this.props;
     const { rowsPerPage, page, checked } = this.state;
     const emptyRows = rowsPerPage - 
@@ -107,7 +107,7 @@ class ReusableTable extends React.Component {
                                 spanText={value}
                                 drawerWidth="640"
                                 placement="right"
-                                drawerContent={<TestDrawerContent/>}/>
+                                drawerContent={drawerContent}/>
                             </TableCell>)
                         })}
                         <TableCell align="left">

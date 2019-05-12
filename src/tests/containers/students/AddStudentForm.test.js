@@ -74,7 +74,6 @@ describe('TestDrawerContent', () =>{
 
     it('should call handleChange', () =>{
         const spy = jest.spyOn(wrapper.instance(), 'handleChange');
-        console.log(wrapper.instance());
         wrapper.instance().handleChange('multi');
         expect(spy).toHaveBeenCalled();
     })
