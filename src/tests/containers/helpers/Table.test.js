@@ -2,25 +2,35 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Table from '../../../containers/helpers/Table';
 import { testTitle, defaultTitles } from '../../../containers/fixtures/TableTitles';
-import { testTabledata } from '../../../containers/fixtures/TestTableData';
+import { testTableData } from '../../../containers/fixtures/TestTableData';
 import TestDrawerContent from '../../../containers/fixtures/TestDrawerContent';
 
 
 
-describe('Edit Modal', () =>{
+describe('Table', () =>{
 
     const wrapper = shallow(
     <Table 
         classes={{}}
         viewTableTitles={defaultTitles} 
         actionTableTitles={testTitle} 
-        tableData={testTabledata}
+        tableData={testTableData}
         drawerContent={TestDrawerContent}
     />).dive();
 
     it('should call handleSwitchChange', () =>{
+        console.log(wrapper.instance().props.tableData.length - 1)
+        wrapper.setState({
+            page: 1,
+            rowsPerPage: 5
+        })
         const spy = jest.spyOn(wrapper.instance(), 'handleSwitchChange');
-        wrapper.instance().handleSwitchChange();
+        const checked = {
+            target: {
+                value: "test"
+            }
+        }
+        wrapper.instance().handleSwitchChange("something")(checked);
         expect(spy).toHaveBeenCalled();
     })
 

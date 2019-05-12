@@ -136,7 +136,7 @@ class AddStudentForm extends React.Component {
 
   handleInputChange = name => event => {
     const { value } = event.target;
-  this.setState({ [name]: value });
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -150,7 +150,6 @@ class AddStudentForm extends React.Component {
         },
       }),
     };
-
     return (
       <div className={classes.root}>
         <NoSsr>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
+// import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import Avatar from '@material-ui/core/Avatar';
+// import NotificationsIcon from '@material-ui/icons/Notifications';
+// import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,7 +21,7 @@ class MainBar extends Component {
         toolbar, 
         menuButtonHidden, 
         title, 
-        bigAvatar, 
+        // bigAvatar, 
         menuButton
       }, 
       state: { 
@@ -56,12 +56,12 @@ class MainBar extends Component {
             >
               Kwan Ber Initiative
             </Typography>
-            <IconButton color="inherit">
+            {/* <IconButton color="inherit">
               <Badge badgeContent={3} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
-            <Avatar alt="User" src="" className={bigAvatar} />
+            </IconButton> */}
+            {/* <Avatar alt="User" src="" className={bigAvatar} /> */}
           </Toolbar>
         </AppBar>
       </>
