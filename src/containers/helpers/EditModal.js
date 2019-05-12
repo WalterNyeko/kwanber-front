@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
 import EditIcon from '@material-ui/icons/Edit';
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from '../../styles/EditModal';
 
 export class EditModal extends React.Component {
   state = {
@@ -63,4 +65,5 @@ export class EditModal extends React.Component {
     );
   }
 }
-export default EditModal;
+
+export default withStyles(styles)(EditModal);

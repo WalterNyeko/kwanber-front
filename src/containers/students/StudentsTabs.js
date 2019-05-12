@@ -1,3 +1,4 @@
+import Table from '../helpers/Table';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,12 +7,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Table from '../../containers/helpers/Table';
+import Modal from '../helpers/Modal';
+import AddStudentForm from './AddStudentForm';
+import { styles } from '../../styles/StudentsTabs';
 import { defaultTitles, testTitle } from '../fixtures/TableTitles';
 import { testTabledata } from '../fixtures/TestTableData';
 import TestDrawerContent from '../fixtures/TestDrawerContent';
-
 
 export const TabContainer = ({ children, dir }) => {
   return (
@@ -26,13 +27,7 @@ TabContainer.propTypes = {
   dir: PropTypes.string.isRequired,
 };
 
-const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-  },
-});
-
-class SchoolsTabs extends React.Component {
+class StudentsTabs extends React.Component {
   state = {
     value: 0,
   };
@@ -46,55 +41,66 @@ class SchoolsTabs extends React.Component {
   };
 
   render() {
-    const { classes: { root, button }, theme: { direction } } = this.props;
-    const { value } = this.state;
+    const { classes, theme } = this.props;
     return (
-      <div className={root} style={{paddingLeft: '0px'}}>
-        <AppBar position="static" color="default">
+      <div className={classes.root}>
+        <AppBar position="static" color="default" style={{}}>
           <Tabs
-            value={value}
+            value={this.state.value}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
           >
-            <Tab label="Primary Schools" />
-            <Tab label="Secondary Schools" />
-            <Tab label="Tertiary Institutions" />
+            <Tab label="Primary Pupils" />
+            <Tab label="Secondary Students" />
+            <Tab label="Tertiary Institution Students" />
           </Tabs>
-        </AppBar >
+        </AppBar>
         <SwipeableViews
-          axis={direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={value}
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={direction}>
-                <Button variant="contained" color="primary" className={button}>
-                    Add Primary School
-                </Button>
-                <Table 
+          <TabContainer dir={theme.direction}>
+            <Modal 
+              buttonText="Register Pupils"
+              modalTitle="Register New Pupils"
+              modalContent={<AddStudentForm/>}
+              modalButtonType="primary"
+              okButtonText="Register"
+              modalWidth="600px"/>
+            <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
                   tableData={testTabledata}
                   drawerContent={TestDrawerContent}
                 />
           </TabContainer>
-          <TabContainer dir={direction}>
-                <Button variant="contained" color="primary" className={button}>
-                    Add Secondar School
-                </Button>
-                <Table 
+          <TabContainer dir={theme.direction}>
+            <Modal 
+              buttonText="Register Students"
+              modalTitle="Register New Students"
+              modalContent={<AddStudentForm/>}
+              modalButtonType="primary"
+              okButtonText="Register"
+              modalWidth="600px"/>
+            <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
                   tableData={testTabledata}
                   drawerContent={TestDrawerContent}
                 />
           </TabContainer>
-          <TabContainer dir={direction}>
-                <Button variant="contained" color="primary" className={button}>
-                    Add Institution
-                </Button>
-                <Table 
+          <TabContainer dir={theme.direction}>
+            <Modal 
+              buttonText="Add Institution Students"
+              modalTitle="Register New Students"
+              modalContent={<AddStudentForm/>}
+              modalButtonType="primary"
+              okButtonText="Register"
+              modalWidth="600px"/>
+            <Table 
                   viewTableTitles={defaultTitles} 
                   actionTableTitles={testTitle} 
                   tableData={testTabledata}
@@ -107,9 +113,9 @@ class SchoolsTabs extends React.Component {
   }
 }
 
-SchoolsTabs.propTypes = {
+StudentsTabs.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(SchoolsTabs);
+export default withStyles(styles, { withTheme: true })(StudentsTabs);

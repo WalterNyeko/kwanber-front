@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from '../../styles/DeleteModal';
 class DeleteModal extends React.Component {
   state = {
     visible: false,
@@ -62,4 +64,4 @@ class DeleteModal extends React.Component {
     );
   }
 }
-export default DeleteModal;
+export default withStyles(styles)(DeleteModal);

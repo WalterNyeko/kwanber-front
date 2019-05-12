@@ -17,7 +17,6 @@ describe('Schools', () =>{
     );
         
     it('should render schools component', () =>{
-        wrapper.setState({ open: true});
         expect(wrapper.find(SchoolsTabs)).toHaveLength(1);
     })
 });

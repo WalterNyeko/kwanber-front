@@ -8,7 +8,7 @@ describe('Delete Modal', () =>{
     const wrapper = shallow(
     <DeleteModal
         classes={{}}
-    />);
+    />).dive();
 
     it('should render modal component', () =>{
         expect(wrapper.find(Modal)).toHaveLength(1);
