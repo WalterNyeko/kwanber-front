@@ -44,6 +44,7 @@ describe('TestDrawerContent', () =>{
     
     const optionProps = {
         isSelected: false,
+        value: "test"
     }
     const wrapperOption = mount(
         <Option {...optionProps}/>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Bar} from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
+import Typography from '@material-ui/core/Typography';
 import SchoolsNodes from './SchoolsNodes';
+
 export default class SchoolsTree extends Component {
   render() {
     const data= {
@@ -30,15 +32,27 @@ export default class SchoolsTree extends Component {
     };
     return (
         <>
-            <div style={{ float: 'left', marginTop: '50px'}}>
-                <SchoolsNodes />
+        <div className="row">
+            <div className="col-md-4">
+                <SchoolsNodes />            
             </div>
-            <div style={{ float: 'right', width: '700px', marginTop: '40px'}}>
+            <div className="col-md-8">
                 <Bar 
                     data={data}
                     options={options}
                 />
             </div>
+
+        </div>
+            
+            <footer>
+                <Typography variant="h6" align="center" gutterBottom>
+                    Kwan Ber Initiative
+                </Typography>
+                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                    This is an app designed to support the education system in Acholi Sub Region
+                </Typography>
+            </footer>
         </>
     )
   }

@@ -8,6 +8,7 @@ describe('StudentsTabs', () =>{
 
     const props = {
         classes: {},
+        theme: {},
     }
 
     const wrapper = mount(

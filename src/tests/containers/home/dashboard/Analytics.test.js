@@ -20,10 +20,4 @@ describe('Analytics', () =>{
         wrapper.instance().handleChange();
         expect(spy).toHaveBeenCalled(); 
     })
-
-    it('should call handleChangeIndex', () =>{
-        const spy = jest.spyOn(wrapper.instance(), 'handleChangeIndex');
-        wrapper.instance().handleChangeIndex();
-        expect(spy).toHaveBeenCalled(); 
-    })
 } );

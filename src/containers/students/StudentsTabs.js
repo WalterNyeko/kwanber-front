@@ -2,10 +2,9 @@ import Table from '../helpers/Table';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { getLanguages } from '../languages/GrabLanguage';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Modal from '../helpers/Modal';
 import AddStudentForm from './AddStudentForm';
@@ -36,78 +35,42 @@ class StudentsTabs extends React.Component {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({ value: index });
-  };
-
   render() {
-    const { classes, theme } = this.props;
+    const categories = getLanguages();
+    const { menu: { 
+            title, 
+        } 
+    } = categories;
     return (
-      <div className={classes.root}>
-        <AppBar position="static" color="default" style={{}}>
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-          >
-            <Tab label="Primary Pupils" />
-            <Tab label="Secondary Students" />
-            <Tab label="Tertiary Institution Students" />
-          </Tabs>
-        </AppBar>
-        <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
-        >
-          <TabContainer dir={theme.direction}>
-            <Modal 
-              buttonText="Register Pupils"
-              modalTitle="Register New Pupils"
-              modalContent={<AddStudentForm/>}
-              modalButtonType="primary"
-              okButtonText="Register"
-              modalWidth="600px"/>
-            <Table 
-                  viewTableTitles={defaultTitles} 
-                  actionTableTitles={testTitle} 
-                  tableData={testTableData}
-                  drawerContent={<TestDrawerContent/>}
-                />
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <Modal 
-              buttonText="Register Students"
-              modalTitle="Register New Students"
-              modalContent={<AddStudentForm/>}
-              modalButtonType="primary"
-              okButtonText="Register"
-              modalWidth="600px"/>
-            <Table 
-                  viewTableTitles={defaultTitles} 
-                  actionTableTitles={testTitle} 
-                  tableData={testTableData}
-                  drawerContent={<TestDrawerContent/>}
-                />
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <Modal 
-              buttonText="Add Institution Students"
-              modalTitle="Register New Students"
-              modalContent={<AddStudentForm/>}
-              modalButtonType="primary"
-              okButtonText="Register"
-              modalWidth="600px"/>
-            <Table 
-                  viewTableTitles={defaultTitles} 
-                  actionTableTitles={testTitle} 
-                  tableData={testTableData}
-                  drawerContent={<AddStudentForm/>}
-                />
-          </TabContainer>
-        </SwipeableViews>
+      <div>
+        <Paper elevation={1} style={{padding: '35px'}}>
+          <Typography variant="h5" component="h3" style={{padding: '0px'}}>
+            {title.value}
+          </Typography>
+            <Divider/>
+              <br></br>
+                <Modal 
+                  buttonText="Register Pupils"
+                  modalTitle="Register New Pupils"
+                  modalContent={<AddStudentForm/>}
+                  modalButtonType="primary"
+                  okButtonText="Register"
+                  modalWidth="600px"/>
+                <Table 
+                      viewTableTitles={defaultTitles} 
+                      actionTableTitles={testTitle} 
+                      tableData={testTableData}
+                      drawerContent={<TestDrawerContent/>}
+                />  
+                <footer>
+                <Typography variant="h6" align="center" gutterBottom>
+                    Kwan Ber Initiative
+                </Typography>
+                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                    This is an app designed to support the education system in Acholi Sub Region
+                </Typography>
+                </footer>
+        </Paper>     
       </div>
     );
   }
@@ -115,7 +78,7 @@ class StudentsTabs extends React.Component {
 
 StudentsTabs.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  theme: PropTypes.object,
 };
 
-export default withStyles(styles, { withTheme: true })(StudentsTabs);
+export default withStyles(styles)(StudentsTabs);

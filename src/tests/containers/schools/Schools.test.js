@@ -8,6 +8,7 @@ describe('Schools', () =>{
 
     const props = {
         classes: {},
+        theme: {},
     }
 
     const wrapper = mount(

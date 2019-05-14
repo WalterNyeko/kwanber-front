@@ -31,17 +31,6 @@ describe('StudentsTabs', () =>{
         expect(spy).toHaveBeenCalled(); 
     })
 
-    it('should call handleChangeIndex', () =>{
-        wrapper.setProps({ 
-            theme: {
-                direction: 'rtl1'
-            } 
-        });
-        const spy = jest.spyOn(wrapper.instance(), 'handleChangeIndex');
-        wrapper.instance().handleChangeIndex();
-        expect(spy).toHaveBeenCalled(); 
-    })
-
     it('should render tab container well', () =>{
         const typography = containerWrapper.find(Typography);
         expect(typography).toHaveLength(1); 
