@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6681a07a.chunk.css",
+    "main.js": "/static/js/main.564b5391.chunk.js",
+    "main.js.map": "/static/js/main.564b5391.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.c5541365.js",
+    "runtime~main.js.map": "/static/js/runtime~main.c5541365.js.map",
+    "static/css/2.4358233e.chunk.css": "/static/css/2.4358233e.chunk.css",
+    "static/js/2.33facb03.chunk.js": "/static/js/2.33facb03.chunk.js",
+    "static/js/2.33facb03.chunk.js.map": "/static/js/2.33facb03.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.068dbb98d1236902e99b63ff3e3f8c09.js": "/precache-manifest.068dbb98d1236902e99b63ff3e3f8c09.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.4358233e.chunk.css.map": "/static/css/2.4358233e.chunk.css.map",
+    "static/css/main.6681a07a.chunk.css.map": "/static/css/main.6681a07a.chunk.css.map",
+    "static/media/puremath1.jpeg": "/static/media/puremath1.3be121ff.jpeg"
+  }
+}

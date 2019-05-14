@@ -18,6 +18,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../../styles/HomePage';
 import { NavLink  } from 'react-router-dom';
+import { getLanguages } from '../languages/GrabLanguage';
 
 class SideBar extends Component {
   render() {
@@ -29,6 +30,20 @@ class SideBar extends Component {
         state: { open }, 
         handleDrawerClose 
     } = this.props;
+    const customStyle = {textDecoration: 'none'};
+    const categories = getLanguages();
+
+    const { sidebar: { 
+                analytics, 
+                schools, 
+                students, 
+                academics, 
+                jobs, 
+                scholarships, 
+                appsettings, 
+                appconfigs 
+            }
+    } = categories;
     return (
         <Drawer
             variant="permanent"
@@ -44,76 +59,66 @@ class SideBar extends Component {
             </div>
             <Divider />
             <List>
-                <NavLink to={`/`}>
+                <NavLink to={`/dashboard`} style={customStyle}>
                     <ListItem button>
                         <ListItemIcon>
                             <DashboardIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Analytics" />
+                        <ListItemText primary={analytics.value} />
                     </ListItem>
                 </NavLink>
-                <NavLink to={`/schools`}>
+                <NavLink to={`/schools`} style={customStyle}>
                     <ListItem button>
                         <ListItemIcon>
                             <SchoolIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Schools" />
+                        <ListItemText primary={schools.value} />
                     </ListItem>
                 </NavLink>
-                <NavLink to={`/students`}>
+                <NavLink to={`/students`} style={customStyle}>
                     <ListItem button>
                         <ListItemIcon>
                             <PeopleIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Students" />
+                        <ListItemText primary={students.value} />
                     </ListItem>
                 </NavLink>
-                <NavLink to={`/academics/results`}>
+                <NavLink to={`/academics/results`} style={customStyle}>
                     <ListItem button>
                         <ListItemIcon>
                             <LayersIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Academics" />
+                        <ListItemText primary={academics.value} />
                     </ListItem>
                 </NavLink>
-                <NavLink to={`/jobs`}>
+                <NavLink to={`/jobs`} style={customStyle}>
                     <ListItem button>
                         <ListItemIcon>
                             <BarChartIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Jobs Listings" />
+                        <ListItemText primary={jobs.value} />
                     </ListItem>
                 </NavLink>
-                <NavLink to={`/scholarships`}>
+                <NavLink to={`/scholarships`} style={customStyle}>
                     <ListItem button>
                         <ListItemIcon>
                             <AssignmentIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Scholarships" />
+                        <ListItemText primary={scholarships.value} />
                     </ListItem>
                 </NavLink>
             </List>
             <Divider />
             <List>
-            <ListSubheader inset>Application Settings</ListSubheader>
+            <ListSubheader inset>{appsettings.value}</ListSubheader>
+                <NavLink to={`/appconfigs`} style={customStyle}>
                 <ListItem button>
                 <ListItemIcon>
                     <AssignmentIcon />
                 </ListItemIcon>
-                <ListItemText primary="Application access" />
+                <ListItemText primary={appconfigs.value} />
                 </ListItem>
-                <ListItem button>
-                <ListItemIcon>
-                    <AssignmentIcon />
-                </ListItemIcon>
-                <ListItemText primary="Application themes" />
-                </ListItem>
-                <ListItem button>
-                <ListItemIcon>
-                    <AssignmentIcon />
-                </ListItemIcon>
-                <ListItemText primary="Application alerts" />
-                </ListItem>
+                </NavLink>
             </List>
         </Drawer>
     )

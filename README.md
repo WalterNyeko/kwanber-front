@@ -1,5 +1,5 @@
+[![CircleCI](https://circleci.com/gh/WalterNyeko/kwanber-front.svg?style=svg)](https://circleci.com/gh/WalterNyeko/kwanber-front)
 [![Maintainability](https://api.codeclimate.com/v1/badges/88ad1f870bedd730d025/maintainability)](https://codeclimate.com/github/WalterNyeko/kwanber-front/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/88ad1f870bedd730d025/test_coverage)](https://codeclimate.com/github/WalterNyeko/kwanber-front/test_coverage)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

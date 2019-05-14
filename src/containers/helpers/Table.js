@@ -1,33 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import TablePaginationActions from './TablePaginationActions';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableFooter from "@material-ui/core/TableFooter";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import TablePaginationActions from "./TablePaginationActions";
 import MUIDataTable from "mui-datatables";
-import Switch from '@material-ui/core/Switch';
-import DeleteModal from './DeleteModal';
-import EditModal from './EditModal';
-import DetailsDrawer from './Drawer';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import { spinnerStyles } from '../../styles/Spinner';
-import { actionsStyles } from '../../styles/Table';
+import Switch from "@material-ui/core/Switch";
+import DeleteModal from "./DeleteModal";
+import EditModal from "./EditModal";
+import DetailsDrawer from "./Drawer";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { spinnerStyles } from "../../styles/Spinner";
+import { actionsStyles } from "../../styles/Table";
 
-const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: true })(
-  TablePaginationActions,
-);
+const TablePaginationActionsWrapped = withStyles(actionsStyles, {
+  withTheme: true
+})(TablePaginationActions);
 
 class ReusableTable extends React.Component {
   state = {
     page: 0,
     rowsPerPage: 5,
-    checked: true,
+    checked: true
   };
 
   handleSwitchChange = name => event => {
@@ -45,90 +45,106 @@ class ReusableTable extends React.Component {
   };
 
   render() {
-    const { 
-        classes, 
-        viewTableTitles, 
-        actionTableTitles, 
-        tableData,
-        drawerContent
+    const {
+      classes,
+      viewTableTitles,
+      actionTableTitles,
+      tableData,
+      drawerContent,
+      loading,
+      title
     } = this.props;
     const { rowsPerPage, page, checked } = this.state;
-    const emptyRows = rowsPerPage - 
-    Math.min(rowsPerPage, tableData.length - page * rowsPerPage);
+    const emptyRows =
+      rowsPerPage -
+      Math.min(rowsPerPage, tableData.length - page * rowsPerPage);
     const options = {
-      filterType: 'checkbox',
+      filterType: "checkbox"
     };
     return (
       <Paper className={classes.root}>
         <Switch
           checked={checked}
-          onChange={this.handleSwitchChange('checked')}
+          onChange={this.handleSwitchChange("checked")}
           value="checked"
           color="primary"
         />
         <div className={classes.tableWrapper}>
-          {checked ?
-          <>
-          <LinearProgress
-            classes={{
-              colorPrimary: classes.linearColorPrimary,
-              barColorPrimary: classes.linearBarColorPrimary,
-            }}
-          />
-          <MUIDataTable
-              title={"Employee List"}
-              data={tableData}
-              columns={viewTableTitles}
-              options={options}
-          />
-          </>:
-          <>
-            <LinearProgress
-              classes={{
-                colorPrimary: classes.linearColorPrimary,
-                barColorPrimary: classes.linearBarColorPrimary,
-              }}
-            />
-            <Table className={classes.table}>
-              <TableHead> 
-                <TableRow>
-                    {actionTableTitles.map((header, index) =>(
+          {checked ? (
+            <>
+              {loading && (
+                <LinearProgress
+                  classes={{
+                    colorPrimary: classes.linearColorPrimary,
+                    barColorPrimary: classes.linearBarColorPrimary
+                  }}
+                />
+              )}
+
+              <MUIDataTable
+                title={title ? title : `Employee List`}
+                data={tableData}
+                columns={viewTableTitles}
+                options={options}
+              />
+            </>
+          ) : (
+            <>
+              {loading && (
+                <LinearProgress
+                  classes={{
+                    colorPrimary: classes.linearColorPrimary,
+                    barColorPrimary: classes.linearBarColorPrimary
+                  }}
+                />
+              )}
+
+              <Table className={classes.table}>
+                <TableHead>
+                  <TableRow>
+                    {actionTableTitles.map((header, index) => (
                       <TableCell key={index}>{header}</TableCell>
                     ))}
-                </TableRow>
-              </TableHead>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
-                  {tableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
-                    <TableRow key={index}>
+                  {tableData
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => (
+                      <TableRow key={index}>
                         {Object.entries(row).map(([key, value]) => {
                           return (
                             <TableCell align="left" key={key}>
-                              <DetailsDrawer 
+                              <DetailsDrawer
                                 spanText={value}
                                 drawerWidth="640"
                                 placement="right"
-                                drawerContent={drawerContent}/>
-                            </TableCell>)
+                                drawerContent={drawerContent}
+                              />
+                            </TableCell>
+                          );
                         })}
                         <TableCell align="left">
-                          <EditModal 
+                          <EditModal
                             modalTitle="Edit Selected Item"
                             modalButtonType="primary"
                             modalContent="Pass here as props, the form for editing"
                             okButtonText="Edit Item"
-                            modalWidth="400px"/>
-                          <DeleteModal 
+                            modalWidth="400px"
+                          />
+                          <DeleteModal
                             modalTitle="Delete Item"
                             modalOkButton="Delete"
                             modalButtonType="danger"
                             modalContent="Are you sure you want to delete this item?"
                             okButtonText="Delete Item"
-                            modalWidth="400px"/>
+                            modalWidth="400px"
+                          />
                         </TableCell>
-                    </TableRow>
-                  ))}
+                      </TableRow>
+                    ))}
                   {emptyRows > 0 && (
-                    <TableRow style={{ height: 0 * emptyRows }}/>
+                    <TableRow style={{ height: 0 * emptyRows }} />
                   )}
                 </TableBody>
                 <TableFooter>
@@ -140,7 +156,7 @@ class ReusableTable extends React.Component {
                       rowsPerPage={rowsPerPage}
                       page={page}
                       SelectProps={{
-                        native: true,
+                        native: true
                       }}
                       onChangePage={this.handleChangePage}
                       onChangeRowsPerPage={this.handleChangeRowsPerPage}
@@ -150,7 +166,7 @@ class ReusableTable extends React.Component {
                 </TableFooter>
               </Table>
             </>
-          }  
+          )}
         </div>
       </Paper>
     );
@@ -158,7 +174,7 @@ class ReusableTable extends React.Component {
 }
 
 ReusableTable.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(spinnerStyles)(ReusableTable);

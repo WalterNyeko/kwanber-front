@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Table from '../../containers/helpers/Table';
-import { defaultTitles, testTitle } from '../fixtures/TableTitles';
-import { testTableData } from '../fixtures/TestTableData';
-import TestDrawerContent from '../fixtures/TestDrawerContent';
-
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Table from "../../containers/helpers/Table";
+import { schoolsTitle, viewTableSchools } from "../fixtures/TableTitles";
+import { testTableData } from "../fixtures/TestTableData";
+import TestDrawerContent from "../fixtures/TestDrawerContent";
+import { getLanguages } from "../languages/GrabLanguage";
+import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
+import stripTypenames from "../../containers/helpers/StripTypeNames";
 
 export const TabContainer = ({ children, dir }) => {
   return (
@@ -19,89 +18,77 @@ export const TabContainer = ({ children, dir }) => {
       {children}
     </Typography>
   );
-}
+};
 
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
+  dir: PropTypes.string.isRequired
 };
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-  },
+    backgroundColor: theme.palette.background.paper
+  }
 });
 
 class SchoolsTabs extends React.Component {
   state = {
-    value: 0,
+    value: 0
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({ value: index });
-  };
-
   render() {
-    const { classes: { root, button }, theme: { direction } } = this.props;
-    const { value } = this.state;
+    const categories = getLanguages();
+    const {
+      menu: { title }
+    } = categories;
+    const { schools, loading } = this.props;
+    const schoolsList = stripTypenames(schools);
     return (
-      <div className={root} style={{paddingLeft: '0px'}}>
-        <AppBar position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-          >
-            <Tab label="Primary Schools" />
-            <Tab label="Secondary Schools" />
-            <Tab label="Tertiary Institutions" />
-          </Tabs>
-        </AppBar >
-        <SwipeableViews
-          axis={direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={value}
-          onChangeIndex={this.handleChangeIndex}
-        >
-          <TabContainer dir={direction}>
-                <Button variant="contained" color="primary" className={button}>
-                    Add Primary School
-                </Button>
-                <Table 
-                  viewTableTitles={defaultTitles} 
-                  actionTableTitles={testTitle} 
-                  tableData={testTableData}
-                  drawerContent={<TestDrawerContent/>}
-                />
-          </TabContainer>
-          <TabContainer dir={direction}>
-                <Button variant="contained" color="primary" className={button}>
-                    Add Secondar School
-                </Button>
-                <Table 
-                  viewTableTitles={defaultTitles} 
-                  actionTableTitles={testTitle} 
-                  tableData={testTableData}
-                  drawerContent={<TestDrawerContent/>}
-                />
-          </TabContainer>
-          <TabContainer dir={direction}>
-                <Button variant="contained" color="primary" className={button}>
-                    Add Institution
-                </Button>
-                <Table 
-                  viewTableTitles={defaultTitles} 
-                  actionTableTitles={testTitle} 
-                  tableData={testTableData}
-                  drawerContent={<TestDrawerContent/>}
-                />
-          </TabContainer>
-        </SwipeableViews>
+      <div style={{ paddingLeft: "0px" }}>
+        <Paper elevation={1} style={{ padding: "35px" }}>
+          <Typography variant="h5" component="h3" style={{ padding: "0px" }}>
+            {title.value}
+          </Typography>
+          <Divider />
+          <br />
+          <Button variant="contained" color="primary">
+            Register Secondary School
+          </Button>
+          {schools && schools.length && (
+            <Table
+              viewTableTitles={viewTableSchools}
+              actionTableTitles={schoolsTitle}
+              tableData={schoolsList}
+              drawerContent={<TestDrawerContent />}
+              loading={loading}
+              title="All Schools"
+            />
+          )}
+
+          <footer>
+            <Typography
+              variant="h6"
+              align="center"
+              className="mt-4"
+              gutterBottom
+            >
+              Kwan Ber Initiative
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              align="center"
+              color="textSecondary"
+              component="p"
+            >
+              This is an app designed to support the education system in Acholi
+              Sub Region
+            </Typography>
+          </footer>
+        </Paper>
       </div>
     );
   }
@@ -109,7 +96,7 @@ class SchoolsTabs extends React.Component {
 
 SchoolsTabs.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  theme: PropTypes.object
 };
 
-export default withStyles(styles, { withTheme: true })(SchoolsTabs);
+export default withStyles(styles)(SchoolsTabs);

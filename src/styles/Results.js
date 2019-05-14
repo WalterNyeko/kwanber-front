@@ -44,4 +44,15 @@ export const styles = theme => ({
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing.unit * 6,
     },
+    title: {
+      display: 'none',
+      marginRight: 10,
+      [theme.breakpoints.up('sm')]: {
+        display: 'block',
+      },
+    },
+
+    dashboardMenu: {
+      padding: '20px 15px 20px 15px',
+    },
   });
